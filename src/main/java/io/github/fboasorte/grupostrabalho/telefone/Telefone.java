@@ -33,7 +33,7 @@ public class Telefone implements Serializable {
     private Integer numero;
 
     @ManyToOne(fetch = FetchType.LAZY,
-                cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     

@@ -10,8 +10,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -34,6 +37,11 @@ public class Grupo implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Atuacao> atuacoes;
+
+    @OneToOne(fetch = FetchType.LAZY, // padrão
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "lider_id")
+    private Pessoa lider;
 
     public Grupo() {
         atuacoes = new java.util.ArrayList<>();
@@ -71,6 +79,14 @@ public class Grupo implements Serializable {
     public void setAtuacoes(List<Atuacao> atuacoes) {
         this.atuacoes = atuacoes;
     }
-//</editor-fold>
 
+    public Pessoa getLider() {
+        return lider;
+    }
+
+    public void setLider(Pessoa lider) {
+        this.lider = lider;
+    }
+
+//</editor-fold>
 }
