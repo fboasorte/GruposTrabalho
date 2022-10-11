@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package io.github.fboasorte.grupostrabalho.resources.pessoa;
+package io.github.fboasorte.grupostrabalho.pessoa;
 
-import io.github.fboasorte.grupostrabalho.resources.grupo.Atuacao;
-import io.github.fboasorte.grupostrabalho.resources.endereco.Endereco;
+import io.github.fboasorte.grupostrabalho.telefone.Telefone;
+import io.github.fboasorte.grupostrabalho.grupo.Atuacao;
+import io.github.fboasorte.grupostrabalho.endereco.Endereco;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +27,8 @@ import javax.persistence.Transient;
  */
 @Entity
 public class Pessoa implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,12 +48,19 @@ public class Pessoa implements Serializable {
     @OneToOne
     private Endereco endereco;
 
-    @OneToMany
-    private List<Telefone> telefone;
+    @OneToMany(mappedBy = "pessoa",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Telefone> telefones;
 
     @OneToMany(mappedBy = "pessoa")
-    private List<Atuacao> atuacao;
+    private List<Atuacao> atuacoes;
 
+    public Pessoa() {
+        telefones = new ArrayList<>();
+        atuacoes =  new ArrayList<>();
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;
@@ -90,12 +102,12 @@ public class Pessoa implements Serializable {
         this.idade = idade;
     }
 
-    public List<Atuacao> getAtuacao() {
-        return atuacao;
+    public List<Atuacao> getAtuacoes() {
+        return atuacoes;
     }
 
-    public void setAtuacao(List<Atuacao> atuacao) {
-        this.atuacao = atuacao;
+    public void setAtuacoes(List<Atuacao> atuacoes) {
+        this.atuacoes = atuacoes;
     }
 
     public Endereco getEndereco() {
@@ -106,12 +118,12 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
 
-    public List<Telefone> getTelefone() {
-        return telefone;
+    public List<Telefone> getTelefones() {
+        return telefones;
     }
 
-    public void setTelefone(List<Telefone> telefone) {
-        this.telefone = telefone;
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 //</editor-fold>
 
