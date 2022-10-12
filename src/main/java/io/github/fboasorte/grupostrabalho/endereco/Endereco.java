@@ -7,6 +7,7 @@ package io.github.fboasorte.grupostrabalho.endereco;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +24,7 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Enumerated
     private TipoLogradouro tipoLogradouro;
     
     @Column(length = 150)
@@ -33,6 +35,8 @@ public class Endereco implements Serializable {
     @Column(length = 25)
     private String bairro;
     
+    
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Endereco(){
         
     }
@@ -45,6 +49,7 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.bairro = bairro;
     }
+//</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
      public Long getId() {

@@ -7,6 +7,7 @@ package io.github.fboasorte.grupostrabalho.pessoa;
 import io.github.fboasorte.grupostrabalho.telefone.Telefone;
 import io.github.fboasorte.grupostrabalho.grupo.Atuacao;
 import io.github.fboasorte.grupostrabalho.endereco.Endereco;
+import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -15,9 +16,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -27,8 +31,13 @@ import javax.persistence.Transient;
  * @author felipe
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "Pessoa.findAll",
+            query = "SELECT p FROM Pessoa p")
+})
 public class Pessoa implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -46,7 +55,8 @@ public class Pessoa implements Serializable {
     @Transient
     private Byte idade;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private Endereco endereco;
 
     @OneToMany(mappedBy = "pessoa",
@@ -54,12 +64,20 @@ public class Pessoa implements Serializable {
             orphanRemoval = true)
     private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "pessoa",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Atuacao> atuacoes;
 
+    @OneToMany(mappedBy = "lider",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Grupo> grupos;
+
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Pessoa() {
         telefones = new ArrayList<>();
-        atuacoes =  new ArrayList<>();
+        atuacoes = new ArrayList<>();
     }
 
     public Pessoa(String nome, String email, LocalDate nascimento, Byte idade) {
@@ -68,8 +86,8 @@ public class Pessoa implements Serializable {
         this.nascimento = nascimento;
         this.idade = idade;
     }
-    
-    
+//</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;
@@ -139,5 +157,12 @@ public class Pessoa implements Serializable {
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", endereco=" + endereco + '}';
     }
 
-    
+    public List<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
 }

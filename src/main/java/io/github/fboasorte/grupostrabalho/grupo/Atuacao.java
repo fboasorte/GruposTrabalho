@@ -40,6 +40,22 @@ public class Atuacao implements Serializable {
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
 
+    //<editor-fold defaultstate="collapsed" desc="Contructors">
+    public Atuacao() {
+    }
+
+    public Atuacao(LocalDate inicio, LocalDate termino, Grupo grupo) {
+        this.inicio = inicio;
+        this.termino = termino;
+        this.grupo = grupo;
+    }
+
+    public Atuacao(LocalDate inicio, Grupo grupo) {
+        this.inicio = inicio;
+        this.grupo = grupo;
+    }
+//</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;

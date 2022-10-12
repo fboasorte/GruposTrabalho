@@ -4,9 +4,12 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,5 +24,28 @@ public class PessoaBean implements PessoaBeanLocal {
     @Override
     public void save(Pessoa pessoa) {
         entityManager.persist(pessoa);
+    }
+
+    @Override
+    public List<Pessoa> findAllPessoaQuery() {
+        Query q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findAllPessoaTyped() {
+        TypedQuery q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p",
+                Pessoa.class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findAllPessoaNamed() {
+        return entityManager.createNamedQuery(
+                "Pessoa.findAll",
+                Pessoa.class)
+                .getResultList();
     }
 }

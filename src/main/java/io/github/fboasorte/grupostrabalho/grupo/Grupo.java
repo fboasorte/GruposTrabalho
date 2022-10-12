@@ -41,23 +41,21 @@ public class Grupo implements Serializable {
             orphanRemoval = true)
     private List<Atuacao> atuacoes;
 
-    @OneToOne(fetch = FetchType.LAZY, // padrão
-            cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @JoinColumn(name = "lider_id")
     private Pessoa lider;
 
-    
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Grupo() {
         atuacoes = new java.util.ArrayList<>();
     }
 
-    public Grupo(Long id, String nome, List<Atuacao> atuacoes, Pessoa lider) {
-        this.id = id;
+    public Grupo(String nome, Boolean ativo) {
         this.nome = nome;
-        this.atuacoes = atuacoes;
-        this.lider = lider;
+        this.ativo = ativo;
     }
-
+//</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {

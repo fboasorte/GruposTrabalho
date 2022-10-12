@@ -32,11 +32,12 @@ public class Telefone implements Serializable {
     
     private Integer numero;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     
+    
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Telefone(){
         
     }
@@ -45,7 +46,7 @@ public class Telefone implements Serializable {
         this.ddd = ddd;
         this.numero = numero;
     }
-    
+//</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {

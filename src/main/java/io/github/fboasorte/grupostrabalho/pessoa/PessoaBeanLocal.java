@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,4 +14,10 @@ import javax.ejb.Local;
 @Local
 public interface PessoaBeanLocal {
     public void save(Pessoa pessoa);
+    
+    public List<Pessoa> findAllPessoaQuery();
+    
+    public List<Pessoa> findAllPessoaTyped();
+    
+    public List<Pessoa> findAllPessoaNamed();
 }
