@@ -9,6 +9,7 @@ import io.github.fboasorte.grupostrabalho.grupo.Atuacao;
 import io.github.fboasorte.grupostrabalho.endereco.Endereco;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -100,6 +101,7 @@ public class Pessoa implements Serializable {
 
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
+        this.idade = (byte) nascimento.until(LocalDate.now(), ChronoUnit.YEARS);
     }
 
     public Byte getIdade() {
