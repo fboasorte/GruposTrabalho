@@ -108,10 +108,6 @@ public class Pessoa implements Serializable {
         return idade;
     }
 
-    public void setIdade(Byte idade) {
-        this.idade = idade;
-    }
-
     public List<Atuacao> getAtuacoes() {
         return atuacoes;
     }
