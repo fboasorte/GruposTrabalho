@@ -131,6 +131,7 @@ public class Pessoa implements Serializable {
     }
 
     public void setAtuacoes(List<Atuacao> atuacoes) {
+        atuacoes.forEach(atuacao -> atuacao.setPessoa(this));
         this.atuacoes = atuacoes;
     }
 

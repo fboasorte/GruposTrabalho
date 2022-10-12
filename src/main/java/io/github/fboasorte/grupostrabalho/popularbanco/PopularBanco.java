@@ -118,14 +118,35 @@ public class PopularBanco implements PopularBancoLocal {
         Grupo grupo3 = new Grupo("Estudo III", false);
         Grupo grupo4 = new Grupo("Estudo IV", true);
 
+        grupo1.setLider(pessoa1);
+        grupo2.setLider(pessoa2);
+        grupo3.setLider(pessoa3);
+        grupo4.setLider(pessoa2);
+
         pessoa1.setGrupos(List.of(
                 grupo1
-                
         )
         );
 
-//        
-//        // Atuacao
+        pessoa2.setGrupos(List.of(
+                grupo1,
+                grupo2,
+                grupo4
+        ));
+
+        pessoa3.setGrupos(List.of(
+                grupo1,
+                grupo3
+        ));
+
+        pessoa4.setGrupos(List.of(
+                grupo1,
+                grupo2,
+                grupo3,
+                grupo4
+        ));
+
+        // Atuacao
         pessoa1.setAtuacoes(List.of(
                 new Atuacao(
                         LocalDate.of(2011, 1, 1),
@@ -136,8 +157,7 @@ public class PopularBanco implements PopularBancoLocal {
                         LocalDate.of(2022, 11, 11),
                         grupo1)
         ));
-//        
-//        
+
         pessoa2.setAtuacoes(List.of(
                 new Atuacao(
                         LocalDate.of(2012, 1, 2),
@@ -151,40 +171,39 @@ public class PopularBanco implements PopularBancoLocal {
                         LocalDate.of(2012, 1, 14),
                         grupo4)
         ));
-//        
-//        
-//        pessoa3.setAtuacoes(List.of(
-//                new Atuacao(
-//                        LocalDate.of(2013, 1, 3),
-//                        LocalDate.of(2021, 1, 13),
-//                        grupo1),
-//                new Atuacao(
-//                        LocalDate.of(2012, 1, 3),
-//                        LocalDate.of(2023, 1, 13),
-//                        grupo3),
-//                new Atuacao(
-//                        LocalDate.of(2012, 1, 4),
-//                        LocalDate.of(2012, 1, 14),
-//                        grupo4)
-//        ));
-//        
-//        pessoa4.setAtuacoes(List.of(
-//                new Atuacao(
-//                        LocalDate.of(2014, 1, 4),
-//                        LocalDate.of(2021, 1, 14),
-//                        grupo1),
-//                new Atuacao(
-//                        LocalDate.of(2012, 1, 2),
-//                        grupo2),
-//                new Atuacao(
-//                        LocalDate.of(2012, 1, 3),
-//                        LocalDate.of(2023, 1, 13),
-//                        grupo3),
-//                new Atuacao(
-//                        LocalDate.of(2012, 1, 4),
-//                        LocalDate.of(2012, 1, 14),
-//                        grupo4)
-//        ));
+
+        pessoa3.setAtuacoes(List.of(
+                new Atuacao(
+                        LocalDate.of(2013, 1, 3),
+                        LocalDate.of(2021, 1, 13),
+                        grupo1),
+                new Atuacao(
+                        LocalDate.of(2012, 1, 3),
+                        LocalDate.of(2023, 1, 13),
+                        grupo3),
+                new Atuacao(
+                        LocalDate.of(2012, 1, 4),
+                        LocalDate.of(2012, 1, 14),
+                        grupo4)
+        ));
+
+        pessoa4.setAtuacoes(List.of(
+                new Atuacao(
+                        LocalDate.of(2014, 1, 4),
+                        LocalDate.of(2021, 1, 14),
+                        grupo1),
+                new Atuacao(
+                        LocalDate.of(2012, 1, 2),
+                        grupo2),
+                new Atuacao(
+                        LocalDate.of(2012, 1, 3),
+                        LocalDate.of(2023, 1, 13),
+                        grupo3),
+                new Atuacao(
+                        LocalDate.of(2012, 1, 4),
+                        LocalDate.of(2012, 1, 14),
+                        grupo4)
+        ));
 
         pessoaBean.save(pessoa1);
         pessoaBean.save(pessoa2);
