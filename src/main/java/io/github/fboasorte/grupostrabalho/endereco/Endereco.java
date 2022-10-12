@@ -33,7 +33,19 @@ public class Endereco implements Serializable {
     @Column(length = 25)
     private String bairro;
     
-
+    public Endereco(){
+        
+    }
+    
+    public Endereco(TipoLogradouro tipoLogradouro, String logradouro,
+            Integer numero, String bairro){
+        
+        this.tipoLogradouro = tipoLogradouro;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
      public Long getId() {
         return id;

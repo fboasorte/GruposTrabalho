@@ -45,7 +45,7 @@ public class Pessoa implements Serializable {
     @Transient
     private Byte idade;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     private Endereco endereco;
 
     @OneToMany(mappedBy = "pessoa",
@@ -60,6 +60,14 @@ public class Pessoa implements Serializable {
         telefones = new ArrayList<>();
         atuacoes =  new ArrayList<>();
     }
+
+    public Pessoa(String nome, String email, LocalDate nascimento, Byte idade) {
+        this.nome = nome;
+        this.email = email;
+        this.nascimento = nascimento;
+        this.idade = idade;
+    }
+    
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
@@ -123,8 +131,15 @@ public class Pessoa implements Serializable {
     }
 
     public void setTelefones(List<Telefone> telefones) {
+        telefones.forEach(tel -> tel.setPessoa(this));
         this.telefones = telefones;
     }
 //</editor-fold>
 
+    @Override
+    public String toString() {
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", endereco=" + endereco + '}';
+    }
+
+    
 }

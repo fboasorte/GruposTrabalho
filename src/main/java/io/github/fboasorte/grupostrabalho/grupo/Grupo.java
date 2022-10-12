@@ -46,10 +46,19 @@ public class Grupo implements Serializable {
     @JoinColumn(name = "lider_id")
     private Pessoa lider;
 
+    
     public Grupo() {
         atuacoes = new java.util.ArrayList<>();
     }
 
+    public Grupo(Long id, String nome, List<Atuacao> atuacoes, Pessoa lider) {
+        this.id = id;
+        this.nome = nome;
+        this.atuacoes = atuacoes;
+        this.lider = lider;
+    }
+
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;

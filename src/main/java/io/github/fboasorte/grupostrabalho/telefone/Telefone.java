@@ -37,6 +37,16 @@ public class Telefone implements Serializable {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     
+    public Telefone(){
+        
+    }
+
+    public Telefone(Byte ddd, Integer numero) {
+        this.ddd = ddd;
+        this.numero = numero;
+    }
+    
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;
