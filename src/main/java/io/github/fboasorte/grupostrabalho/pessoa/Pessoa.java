@@ -150,13 +150,7 @@ public class Pessoa implements Serializable {
     public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
     }
-//</editor-fold>
-
-    @Override
-    public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", endereco=" + endereco + '}';
-    }
-
+    
     public List<Grupo> getGrupos() {
         return grupos;
     }
@@ -164,5 +158,13 @@ public class Pessoa implements Serializable {
     public void setGrupos(List<Grupo> grupos) {
         this.grupos = grupos;
     }
+//</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="toString">
+    @Override
+    public String toString() {
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", endereco=" + endereco + '}';
+    }
+//</editor-fold>
+    
 }
