@@ -48,4 +48,96 @@ public class PessoaBean implements PessoaBeanLocal {
                 Pessoa.class)
                 .getResultList();
     }
+    
+    @Override
+    public List<String> findNomePessoaQuery() {
+        Query q = entityManager.createQuery(
+                "SELECT p.nome FROM Pessoa p");
+        return (List<String>) q.getResultList();
+    }
+    
+    @Override
+    public List<String> findNomePessoaTyped() {
+        TypedQuery q = entityManager.createQuery(
+                "SELECT p.nome FROM Pessoa p",
+                String.class);
+        return q.getResultList();
+    }
+    
+    @Override
+    public List<String> findNomePessoaNamed() {
+        return entityManager.createNamedQuery(
+                "Pessoa.findNome",
+                String.class)
+                .getResultList();
+    }
+    
+    @Override
+    public List<Pessoa> findNomeEnderecoQuery() {
+        Query q = entityManager.createQuery(
+                "SELECT p.nome, p.endereco FROM Pessoa p");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findNomeEnderecoTyped() {
+        TypedQuery q = entityManager.createQuery(
+                "SELECT p.nome, p.endereco FROM Pessoa p",
+                Object[].class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> findNomeEnderecoNamed() {
+        return entityManager.createNamedQuery(
+                "Pessoa.findNomeEndereco",
+                Object[].class)
+                .getResultList();
+    }
+    
+    @Override
+    public List<Pessoa> findPessoaInAvenidaQuery() {
+        Query q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro = 1");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaInAvenidaTyped() {
+        TypedQuery q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro = 1",
+                Pessoa.class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaInAvenidaNamed() {
+        return entityManager.createNamedQuery(
+                "Pessoa.findPessoaInAvenida",
+                Pessoa.class)
+                .getResultList();
+    }
+    
+    @Override
+    public List<Pessoa> findPessoaNotPracaQuery() {
+        Query q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro != 2");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaNotPracaTyped() {
+        TypedQuery q = entityManager.createQuery(
+                "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro != 2",
+                Pessoa.class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaNotPracaNamed() {
+        return entityManager.createNamedQuery(
+                "Pessoa.findPessoaNotPraca",
+                Pessoa.class)
+                .getResultList();
+    }
 }

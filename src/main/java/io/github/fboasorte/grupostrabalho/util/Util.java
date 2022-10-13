@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.util;
 
+import static java.lang.System.out;
 import java.util.Locale;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
@@ -26,5 +27,12 @@ public class Util {
                 .withPropertyOrderStrategy(
                         PropertyOrderStrategy.LEXICOGRAPHICAL);
         return JsonbBuilder.create(config).toJson(object);
+    }
+    
+    public static String formatarImprimir(String titulo,Object object){
+        String texto;
+        texto = ("<h2>" + titulo + "</h2>");
+        texto += ("<p><pre>"+toJson(object)+"</p></pre>");
+        return texto;
     }
 }
