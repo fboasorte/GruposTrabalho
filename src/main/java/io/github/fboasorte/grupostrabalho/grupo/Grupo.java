@@ -7,10 +7,10 @@ package io.github.fboasorte.grupostrabalho.grupo;
 import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
 import java.io.Serializable;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,6 +44,7 @@ public class Grupo implements Serializable {
     @OneToOne(cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JoinColumn(name = "lider_id")
+    @JsonbTransient
     private Pessoa lider;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">

@@ -4,16 +4,11 @@
  */
 package io.github.fboasorte.grupostrabalho.telefone;
 
-import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -31,11 +26,6 @@ public class Telefone implements Serializable {
     private Byte ddd;
     
     private Integer numero;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoa;
-    
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Telefone(){
@@ -71,17 +61,7 @@ public class Telefone implements Serializable {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
-    }
-    
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-    
-    
+    } 
     
     
 //</editor-fold>

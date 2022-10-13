@@ -7,6 +7,7 @@ package io.github.fboasorte.grupostrabalho.grupo;
 import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
 import java.io.Serializable;
 import java.time.LocalDate;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,12 +33,14 @@ public class Atuacao implements Serializable {
 
     private LocalDate termino;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id")
+    @JsonbTransient
     private Pessoa pessoa;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "grupo_id")
+    @JsonbTransient
     private Grupo grupo;
 
     //<editor-fold defaultstate="collapsed" desc="Contructors">

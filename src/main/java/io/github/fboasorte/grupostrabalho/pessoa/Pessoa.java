@@ -16,10 +16,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -59,9 +59,9 @@ public class Pessoa implements Serializable {
             orphanRemoval = true)
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "pessoa",
-            cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
+    @JoinColumn(name = "pessoa_id")
     private List<Telefone> telefones;
 
     @OneToMany(mappedBy = "pessoa",
@@ -148,7 +148,6 @@ public class Pessoa implements Serializable {
     }
 
     public void setTelefones(List<Telefone> telefones) {
-        telefones.forEach(tel -> tel.setPessoa(this));
         this.telefones = telefones;
     }
 //</editor-fold>
