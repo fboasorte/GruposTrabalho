@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.Local;
@@ -79,4 +80,16 @@ public interface PessoaBeanLocal {
 //</editor-fold>
     
     public List<String> findQuantidadeTelefonesPorPessoa();
+    
+    public List<Grupo> findGruposInativos();
+    
+    public List<String[]> findLideresGrupos();
+    
+    public List<String> findMembrosGrupo(String nomeGrupo);
+    
+    public List<Grupo> findGruposPorLider(String nomeLider);
+    
+    public List<Object[]> findDatasAtuacaoGrupo(String nomeMembro);
+    
+    public List<Grupo> findGrupoByNome(String nomeGrupo);
 }

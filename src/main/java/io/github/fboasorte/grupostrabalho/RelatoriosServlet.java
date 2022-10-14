@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho;
 
+import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import io.github.fboasorte.grupostrabalho.pessoa.PessoaBeanLocal;
 import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
 import io.github.fboasorte.grupostrabalho.util.Util;
@@ -56,10 +57,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 1">
             List<Pessoa> pessoasTodasQuery = pessoaBean.findAllPessoaQuery();
             out.println(Util.formatarImprimir("1-a) Quais as pessoas (dados completos) cadastradas?", pessoasTodasQuery));
-            
+
             List<Pessoa> pessoasTodasTyped = pessoaBean.findAllPessoaTyped();
             out.println(Util.formatarImprimir("1-b) Quais as pessoas (dados completos) cadastradas?", pessoasTodasTyped));
-            
+
             List<Pessoa> pessoasTodasNamed = pessoaBean.findAllPessoaNamed();
             out.println(Util.formatarImprimir("1-c) Quais as pessoas (dados completos) cadastradas?", pessoasTodasNamed));
 //</editor-fold>
@@ -67,10 +68,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 2">
             List<String> nomesPessoasQuery = pessoaBean.findNomePessoaQuery();
             out.println(Util.formatarImprimir("2-a) Quais os nomes das pessoas?", nomesPessoasQuery));
-            
+
             List<String> nomesPessoasTyped = pessoaBean.findNomePessoaTyped();
             out.println(Util.formatarImprimir("2-b) Quais os nomes das pessoas?", nomesPessoasTyped));
-            
+
             List<String> nomesPessoasNamed = pessoaBean.findNomePessoaNamed();
             out.println(Util.formatarImprimir("2-c) Quais os nomes das pessoas?", nomesPessoasNamed));
 //</editor-fold>
@@ -78,10 +79,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 3">
             List<Pessoa> pessoasNomeEnderecoQuery = pessoaBean.findNomeEnderecoQuery();
             out.println(Util.formatarImprimir("3-a) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoQuery));
-            
+
             List<Pessoa> pessoasNomeEnderecoTyped = pessoaBean.findNomeEnderecoTyped();
             out.println(Util.formatarImprimir("3-b) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoTyped));
-            
+
             List<Object[]> pessoasNomeEnderecoNamed = pessoaBean.findNomeEnderecoNamed();
             out.println(Util.formatarImprimir("3-c) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoNamed));
 //            
@@ -90,10 +91,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 4">
             List<Pessoa> pessoasInAvendaQuery = pessoaBean.findPessoaInAvenidaQuery();
             out.println(Util.formatarImprimir("4-a) Quais pessoas (dados completos) moram em avenidas?", pessoasInAvendaQuery));
-            
+
             List<Pessoa> pessoasInAvendaTyped = pessoaBean.findPessoaInAvenidaTyped();
             out.println(Util.formatarImprimir("4-b) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaTyped));
-            
+
             List<Pessoa> pessoasInAvendaNamed = pessoaBean.findPessoaInAvenidaNamed();
             out.println(Util.formatarImprimir("4-c) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaNamed));
 //</editor-fold>
@@ -101,10 +102,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 5">
             List<Pessoa> pessoasNotPracaQuery = pessoaBean.findPessoaNotPracaQuery();
             out.println(Util.formatarImprimir("5-a) Quais pessoas (dados completos) não moram em praças?", pessoasNotPracaQuery));
-            
+
             List<Pessoa> pessoasNotPracaTyped = pessoaBean.findPessoaNotPracaTyped();
             out.println(Util.formatarImprimir("5-b) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaTyped));
-            
+
             List<Pessoa> pessoasNotPracaNamed = pessoaBean.findPessoaNotPracaNamed();
             out.println(Util.formatarImprimir("5-c) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaNamed));
 //</editor-fold>
@@ -112,10 +113,10 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 6">
             List<Object[]> pessoaNomeTelefoneQuery = pessoaBean.findPessoaNomeTelefoneQuery();
             out.println(Util.formatarImprimir("6-a) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneQuery));
-            
+
             List<Object[]> pessoaNomeTelefoneTyped = pessoaBean.findPessoaNomeTelefoneTyped();
             out.println(Util.formatarImprimir("6-b) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneTyped));
-            
+
             List<Object[]> pessoaNomeTelefoneNamed = pessoaBean.findPessoaNomeTelefoneNamed();
             out.println(Util.formatarImprimir("6-c) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneNamed));
 //</editor-fold>
@@ -129,10 +130,8 @@ public class RelatoriosServlet extends HttpServlet {
                     pessoasPorData));
 
 //</editor-fold>
-
             //<editor-fold defaultstate="collapsed" desc="Questao 8">
 //</editor-fold>
-
             //<editor-fold defaultstate="collapsed" desc="Questao 9">
             List<Pessoa> pessoasTelefoneVazio = pessoaBean.findPessoaTelefoneVazio();
 
@@ -141,12 +140,55 @@ public class RelatoriosServlet extends HttpServlet {
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 10">
-List<String> telefonesPorPessoa = pessoaBean.findQuantidadeTelefonesPorPessoa();
+            List<String> telefonesPorPessoa = pessoaBean.findQuantidadeTelefonesPorPessoa();
 
             out.println(Util.formatarImprimir("10) Quantos telefones cada pessoa (nome) tem?",
                     telefonesPorPessoa));
 //</editor-fold>
 
+            //<editor-fold defaultstate="collapsed" desc="Questao 11">
+            List<Grupo> gruposInativos = pessoaBean.findGruposInativos();
+
+            out.println(Util.formatarImprimir("11) Quais grupos (dados completos) não estão ativos?",
+                    gruposInativos));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 12">
+            List<String[]> lideresGrupos = pessoaBean.findLideresGrupos();
+
+            out.println(Util.formatarImprimir("12) Quais são os líderes (nomes) dos grupos (nomes)?",
+                    lideresGrupos));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 13">
+            List<String> membrosGrupo = pessoaBean.findMembrosGrupo("Estudo IV");
+
+            out.println(Util.formatarImprimir("13) Quais são os membros (nomes) do grupo com nome “Estudo IV” com ordenação alfabética\n"
+                    + "inversa?",
+                    membrosGrupo));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 14">
+            List<Grupo> gruposBeatriz = pessoaBean.findGruposPorLider("Beatriz Yana");
+
+            out.println(Util.formatarImprimir("14) Quais são os grupos (dados completos) liderados por “Beatriz Yana”?",
+                    gruposBeatriz));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 15">
+            List<Object[]> atuacaoGrupos = pessoaBean.findDatasAtuacaoGrupo("Cecília Xerxes");
+
+            out.println(Util.formatarImprimir("15) Quais são as datas de início e de término da atuação e os grupos (nomes) nos quais “Cecília\n"
+                    + "Xerxes” é membro?",
+                    atuacaoGrupos));
+//</editor-fold>
+
+//<editor-fold defaultstate="collapsed" desc="Questao 16">
+            List<Grupo> grupoPorNome = pessoaBean.findGrupoByNome("II");
+
+            out.println(Util.formatarImprimir("16) Quais são os grupos (dados completos) que contêm “II” em seus nomes?",
+                    grupoPorNome));
+//</editor-fold>
             out.println("</body>");
             out.println("</html>");
         }

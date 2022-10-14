@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -205,6 +206,68 @@ public class PessoaBean implements PessoaBeanLocal {
         return (List<String>) entityManager
                 // "select c,count(c) from Conta c group by c.id"
                 .createQuery("SELECT p.nome, count(t.id) FROM Pessoa p, IN (p.telefones) t GROUP BY p.nome")
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 11">
+    @Override
+    public List<Grupo> findGruposInativos() {
+        return (List<Grupo>) entityManager
+                .createQuery("SELECT g FROM Grupo g WHERE g.ativo = false")
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 12">
+    @Override
+    public List<String[]> findLideresGrupos() {
+        return (List<String[]>) entityManager
+                .createQuery("SELECT g.nome, g.lider.nome FROM Grupo g")
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 13">
+     @Override
+    public List<String> findMembrosGrupo(String nomeGrupo) {
+        String query = "SELECT a.pessoa.nome FROM Atuacao a WHERE a.grupo.nome = :nomeGrupo ORDER BY a.pessoa.nome DESC";
+        return (List<String>) entityManager
+                .createQuery(query)
+                .setParameter("nomeGrupo", nomeGrupo)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 14">
+    @Override
+    public List<Grupo> findGruposPorLider(String nomeLider) {
+        String query = "SELECT g FROM Pessoa p, IN (p.grupos) g WHERE p.nome = :nomeLider";
+        return (List<Grupo>) entityManager
+                .createQuery(query)
+                .setParameter("nomeLider", nomeLider)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 15">
+    @Override
+    public List<Object[]> findDatasAtuacaoGrupo(String nomeMembro) {
+        String query = "SELECT g.nome, a.inicio, a.termino FROM Grupo g, IN (g.atuacoes) a WHERE a.pessoa.nome = :nomeMembro";
+        return (List<Object[]>) entityManager
+                .createQuery(query)
+                .setParameter("nomeMembro", nomeMembro)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 16">
+    @Override
+    public List<Grupo> findGrupoByNome(String nomeGrupo) {
+        String query = "SELECT g FROM Grupo g WHERE g.nome LIKE :nomeGrupo";
+        return (List<Grupo>) entityManager
+                .createQuery(query)
+                .setParameter("nomeGrupo", '%' + nomeGrupo + '%')
                 .getResultList();
     }
 //</editor-fold>
