@@ -46,7 +46,10 @@ import javax.persistence.Transient;
             query = "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro = 1"),
     @NamedQuery(
             name = "Pessoa.findPessoaNotPraca",
-            query = "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro != 2")
+            query = "SELECT p FROM Pessoa p WHERE p.endereco.tipoLogradouro != 2"),
+    @NamedQuery(
+            name = "Pessoa.findPessoaNomeTelefone",
+            query = "SELECT p.nome, t FROM Pessoa p, IN (p.telefones) t")
 })
 public class Pessoa implements Serializable {
 

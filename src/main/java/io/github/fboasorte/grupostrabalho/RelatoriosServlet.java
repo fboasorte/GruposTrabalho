@@ -9,6 +9,8 @@ import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
 import io.github.fboasorte.grupostrabalho.util.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -92,12 +94,46 @@ public class RelatoriosServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Questao 5">
 //            List<Pessoa> pessoasNotPracaQuery = pessoaBean.findPessoaNotPracaQuery();
 //            out.println(Util.formatarImprimir("4) Quais pessoas (dados completos) não moram em praças?", pessoasNotPracaQuery));
-
 //            List<Pessoa> pessoasNotPracaTyped = pessoaBean.findPessoaNotPracaTyped();
 //            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaTyped));
-
 //            List<Pessoa> pessoasNotPracaNamed = pessoaBean.findPessoaNotPracaNamed();
 //            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaNamed));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 6">
+//            List<Object[]> pessoaNomeTelefoneQuery = pessoaBean.findPessoaNomeTelefoneQuery();
+//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneQuery));
+//            List<Object[]> pessoaNomeTelefoneTyped = pessoaBean.findPessoaNomeTelefoneTyped();
+//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneTyped));
+//            List<Object[]> pessoaNomeTelefoneNamed = pessoaBean.findPessoaNomeTelefoneNamed();
+//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneNamed));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 7">
+//            List<Pessoa> pessoasPorData = pessoaBean.findPessoaByDate(
+//                    LocalDate.of(2001, Month.APRIL, 1),
+//                    LocalDate.of(2004, Month.APRIL, 30));
+//
+//            out.println(Util.formatarImprimir("7) Quais as pessoas (dados completos) que nasceram entre abril de 2001 e abril de 2004?",
+//                    pessoasPorData));
+
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 8">
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 9">
+//            List<Pessoa> pessoasTelefoneVazio = pessoaBean.findPessoaTelefoneVazio();
+//
+//            out.println(Util.formatarImprimir("9) Quais pessoas (dados completos) não possuem telefone?",
+//                    pessoasTelefoneVazio));
+//</editor-fold>
+
+//<editor-fold defaultstate="collapsed" desc="Questao 10">
+List<String> telefonesPorPessoa = pessoaBean.findQuantidadeTelefonesPorPessoa();
+
+            out.println(Util.formatarImprimir("10) Quantos telefones cada pessoa (nome) tem?",
+                    telefonesPorPessoa));
 //</editor-fold>
             out.println("</body>");
             out.println("</html>");
