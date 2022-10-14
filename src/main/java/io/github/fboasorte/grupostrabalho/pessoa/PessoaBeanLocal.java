@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import io.github.fboasorte.grupostrabalho.dto.MembroDto;
 import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import java.time.LocalDate;
 import java.util.List;
@@ -98,6 +99,8 @@ public interface PessoaBeanLocal {
     public List<Object[]> findNomeGrupoPorTotalAtuacoes(Long total);
     
     public List<String> findNomePessoaPorDataEntradaEmGrupo(Long grupoId, LocalDate dataInicio);
+    
+    public List<MembroDto> findMembroDto(LocalDate dataInicio);
     
     public List<String[]> findGruposEPessoaSemDataTermino();
     

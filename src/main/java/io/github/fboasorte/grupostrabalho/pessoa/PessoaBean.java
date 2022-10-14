@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho.pessoa;
 
+import io.github.fboasorte.grupostrabalho.dto.MembroDto;
 import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import java.time.LocalDate;
 import java.util.List;
@@ -190,7 +191,6 @@ public class PessoaBean implements PessoaBeanLocal {
 
     //<editor-fold defaultstate="collapsed" desc="Questao 8">
 //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Questao 9">
     @Override
     public List<Pessoa> findPessoaTelefoneVazio() {
@@ -199,7 +199,7 @@ public class PessoaBean implements PessoaBeanLocal {
         return (List<Pessoa>) q.getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 10">
     @Override
     public List<String> findQuantidadeTelefonesPorPessoa() {
@@ -209,7 +209,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 11">
     @Override
     public List<Grupo> findGruposInativos() {
@@ -218,7 +218,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 12">
     @Override
     public List<String[]> findLideresGrupos() {
@@ -227,9 +227,9 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 13">
-     @Override
+    @Override
     public List<String> findMembrosGrupo(String nomeGrupo) {
         String query = "SELECT a.pessoa.nome FROM Atuacao a WHERE a.grupo.nome = :nomeGrupo ORDER BY a.pessoa.nome DESC";
         return (List<String>) entityManager
@@ -238,7 +238,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 14">
     @Override
     public List<Grupo> findGruposPorLider(String nomeLider) {
@@ -249,7 +249,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 15">
     @Override
     public List<Object[]> findDatasAtuacaoGrupo(String nomeMembro) {
@@ -260,7 +260,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 16">
     @Override
     public List<Grupo> findGrupoByNome(String nomeGrupo) {
@@ -271,9 +271,9 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 17">
-     @Override
+    @Override
     public List<Object[]> findNomeGrupoQuantidadeMembros() {
         String query = "SELECT g.nome, COUNT(DISTINCT a.pessoa.id) FROM Grupo g, IN (g.atuacoes) a GROUP BY g.nome";
         return (List<Object[]>) entityManager
@@ -281,7 +281,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 18">
     @Override
     public List<Object[]> findNomeGrupoPorTotalAtuacoes(Long total) {
@@ -292,7 +292,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 19">
     @Override
     public List<String> findNomePessoaPorDataEntradaEmGrupo(Long grupoId, LocalDate dataInicio) {
@@ -304,11 +304,18 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Questao 20">
 
+    //<editor-fold defaultstate="collapsed" desc="Questao 20">
+    @Override
+    public List<MembroDto> findMembroDto(LocalDate dataInicio) {
+        String query = "SELECT new io.github.fboasorte.grupostrabalho.dto.MembroDto(a.grupo.nome, a.inicio, a.pessoa.nome) FROM Atuacao a WHERE a.inicio >= :dataInicio";
+        return (List<MembroDto>) entityManager
+                .createQuery(query)
+                .setParameter("dataInicio", dataInicio)
+                .getResultList();
+    }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 21">
     @Override
     public List<String[]> findGruposEPessoaSemDataTermino() {
@@ -318,7 +325,7 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Questao 22">
     @Override
     public List<String[]> findLiderMembrosGrupos() {

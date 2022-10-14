@@ -4,6 +4,7 @@
  */
 package io.github.fboasorte.grupostrabalho;
 
+import io.github.fboasorte.grupostrabalho.dto.MembroDto;
 import io.github.fboasorte.grupostrabalho.grupo.Grupo;
 import io.github.fboasorte.grupostrabalho.pessoa.PessoaBeanLocal;
 import io.github.fboasorte.grupostrabalho.pessoa.Pessoa;
@@ -214,6 +215,11 @@ public class RelatoriosServlet extends HttpServlet {
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 20">
+            List<MembroDto> membrosDto = pessoaBean.findMembroDto(LocalDate.of(2012, Month.JANUARY, 1));
+
+            out.println(Util.formatarImprimir("20) Quais os grupos (nomes), membros (nomes) e as respectivas datas de entrada daqueles que\n"
+                    + "entraram a partir de 2012 em qualquer grupo?",
+                    membrosDto));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 21">
