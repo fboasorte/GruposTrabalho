@@ -130,8 +130,10 @@ public class RelatoriosServlet extends HttpServlet {
                     pessoasPorData));
 
 //</editor-fold>
+
             //<editor-fold defaultstate="collapsed" desc="Questao 8">
 //</editor-fold>
+
             //<editor-fold defaultstate="collapsed" desc="Questao 9">
             List<Pessoa> pessoasTelefoneVazio = pessoaBean.findPessoaTelefoneVazio();
 
@@ -183,12 +185,52 @@ public class RelatoriosServlet extends HttpServlet {
                     atuacaoGrupos));
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="Questao 16">
+            //<editor-fold defaultstate="collapsed" desc="Questao 16">
             List<Grupo> grupoPorNome = pessoaBean.findGrupoByNome("II");
 
             out.println(Util.formatarImprimir("16) Quais são os grupos (dados completos) que contêm “II” em seus nomes?",
                     grupoPorNome));
 //</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 17">
+            List<Object[]> nomeGrupoQuantidadeMembros = pessoaBean.findNomeGrupoQuantidadeMembros();
+
+            out.println(Util.formatarImprimir("17) Quais são os grupos (nomes) e os respectivos totais de membros distintos já alocados?",
+                    nomeGrupoQuantidadeMembros));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 18">
+            List<Object[]> nomeGrupoTotalAtuacoes = pessoaBean.findNomeGrupoPorTotalAtuacoes(3L);
+
+            out.println(Util.formatarImprimir("18) Quais grupos (nomes) têm 3 ou mais atuações de membros e quanto são esses totais de atuações?",
+                    nomeGrupoTotalAtuacoes));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 19">
+            List<String> nomePessoaPorDataEntradaEmGrupo = pessoaBean.findNomePessoaPorDataEntradaEmGrupo(1L, LocalDate.of(2012, Month.JANUARY, 1));
+
+            out.println(Util.formatarImprimir("19) Quais membros (nomes) entraram a partir de 2012 no primeiro grupo?",
+                    nomePessoaPorDataEntradaEmGrupo));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 20">
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 21">
+            List<String[]> gruposEPessoaSemDataTermino = pessoaBean.findGruposEPessoaSemDataTermino();
+
+            out.println(Util.formatarImprimir("21) Quais os grupos (nomes) e respectivos membros (nomes) que não possuem data de término de\n"
+                    + "atuação em seus grupos?",
+                    gruposEPessoaSemDataTermino));
+//</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc="Questao 22">
+            List<String[]> liderMembrosGrupos = pessoaBean.findLiderMembrosGrupos();
+
+            out.println(Util.formatarImprimir("22) Quais são os grupos (nomes) e líderes (nomes) com respectivos membros (nomes)?",
+                    liderMembrosGrupos));
+//</editor-fold>
+
             out.println("</body>");
             out.println("</html>");
         }

@@ -271,4 +271,62 @@ public class PessoaBean implements PessoaBeanLocal {
                 .getResultList();
     }
 //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 17">
+     @Override
+    public List<Object[]> findNomeGrupoQuantidadeMembros() {
+        String query = "SELECT g.nome, COUNT(DISTINCT a.pessoa.id) FROM Grupo g, IN (g.atuacoes) a GROUP BY g.nome";
+        return (List<Object[]>) entityManager
+                .createQuery(query)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 18">
+    @Override
+    public List<Object[]> findNomeGrupoPorTotalAtuacoes(Long total) {
+        String query = "SELECT g.nome, COUNT(a.id) FROM Grupo g, IN (g.atuacoes) a GROUP BY g.nome HAVING COUNT(a.id) >= :total";
+        return (List<Object[]>) entityManager
+                .createQuery(query)
+                .setParameter("total", total)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 19">
+    @Override
+    public List<String> findNomePessoaPorDataEntradaEmGrupo(Long grupoId, LocalDate dataInicio) {
+        String query = "SELECT DISTINCT a.pessoa.nome FROM Atuacao a WHERE a.grupo.id = :grupoId AND a.inicio >= :dataInicio";
+        return (List<String>) entityManager
+                .createQuery(query)
+                .setParameter("grupoId", grupoId)
+                .setParameter("dataInicio", dataInicio)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 20">
+
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 21">
+    @Override
+    public List<String[]> findGruposEPessoaSemDataTermino() {
+        String query = "SELECT a.grupo.nome, a.pessoa.nome FROM Atuacao a WHERE a.termino IS NULL";
+        return (List<String[]>) entityManager
+                .createQuery(query)
+                .getResultList();
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Questao 22">
+    @Override
+    public List<String[]> findLiderMembrosGrupos() {
+        String query = "SELECT g.nome, g.lider.nome, p.nome FROM Atuacao a JOIN a.grupo g JOIN a.pessoa p ORDER BY g.nome, g.lider.nome, p.nome";
+        return (List<String[]>) entityManager
+                .createQuery(query)
+                .getResultList();
+
+    }
+//</editor-fold>
 }

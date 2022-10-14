@@ -92,4 +92,14 @@ public interface PessoaBeanLocal {
     public List<Object[]> findDatasAtuacaoGrupo(String nomeMembro);
     
     public List<Grupo> findGrupoByNome(String nomeGrupo);
+    
+    public List<Object[]> findNomeGrupoQuantidadeMembros();
+    
+    public List<Object[]> findNomeGrupoPorTotalAtuacoes(Long total);
+    
+    public List<String> findNomePessoaPorDataEntradaEmGrupo(Long grupoId, LocalDate dataInicio);
+    
+    public List<String[]> findGruposEPessoaSemDataTermino();
+    
+    public List<String[]> findLiderMembrosGrupos();
 }
