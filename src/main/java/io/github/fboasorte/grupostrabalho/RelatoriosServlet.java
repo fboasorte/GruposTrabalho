@@ -54,68 +54,79 @@ public class RelatoriosServlet extends HttpServlet {
             out.println("<h1>Consultas</h1>");
 
             //<editor-fold defaultstate="collapsed" desc="Questao 1">
-//            List<Pessoa> pessoasTodasQuery = pessoaBean.findAllPessoaQuery();
-//            out.println(Util.formatarImprimir("1) Quais as pessoas (dados completos) cadastradas?", pessoasTodasQuery));
-//            List<Pessoa> pessoasTodasTyped = pessoaBean.findAllPessoaTyped();
-//            out.println(Util.formatarImprimir("1) Quais as pessoas (dados completos) cadastradas?", pessoasTodasTyped));
-//            List<Pessoa> pessoasTodasNamed = pessoaBean.findAllPessoaNamed();
-//            out.println(Util.formatarImprimir("1) Quais as pessoas (dados completos) cadastradas?", pessoasTodasNamed));
+            List<Pessoa> pessoasTodasQuery = pessoaBean.findAllPessoaQuery();
+            out.println(Util.formatarImprimir("1-a) Quais as pessoas (dados completos) cadastradas?", pessoasTodasQuery));
+            
+            List<Pessoa> pessoasTodasTyped = pessoaBean.findAllPessoaTyped();
+            out.println(Util.formatarImprimir("1-b) Quais as pessoas (dados completos) cadastradas?", pessoasTodasTyped));
+            
+            List<Pessoa> pessoasTodasNamed = pessoaBean.findAllPessoaNamed();
+            out.println(Util.formatarImprimir("1-c) Quais as pessoas (dados completos) cadastradas?", pessoasTodasNamed));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 2">
-//            List<String> nomesPessoasQuery = pessoaBean.findNomePessoaQuery();
-//            out.println(Util.formatarImprimir("2) Quais os nomes das pessoas?", nomesPessoasQuery));
-//            List<String> nomesPessoasTyped = pessoaBean.findNomePessoaTyped();
-//            out.println(Util.formatarImprimir("2) Quais os nomes das pessoas?", nomesPessoasTyped));
-//            List<String> nomesPessoasNamed = pessoaBean.findNomePessoaNamed();
-//            out.println(Util.formatarImprimir("2) Quais os nomes das pessoas?", nomesPessoasNamed));
+            List<String> nomesPessoasQuery = pessoaBean.findNomePessoaQuery();
+            out.println(Util.formatarImprimir("2-a) Quais os nomes das pessoas?", nomesPessoasQuery));
+            
+            List<String> nomesPessoasTyped = pessoaBean.findNomePessoaTyped();
+            out.println(Util.formatarImprimir("2-b) Quais os nomes das pessoas?", nomesPessoasTyped));
+            
+            List<String> nomesPessoasNamed = pessoaBean.findNomePessoaNamed();
+            out.println(Util.formatarImprimir("2-c) Quais os nomes das pessoas?", nomesPessoasNamed));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 3">
-//            List<Pessoa> pessoasNomeEnderecoQuery = pessoaBean.findNomeEnderecoQuery();
-//            out.println(Util.formatarImprimir("3) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoQuery));
-//            List<Pessoa> pessoasNomeEnderecoTyped = pessoaBean.findNomeEnderecoTyped();
-//            out.println(Util.formatarImprimir("3) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoTyped));
-//            
-//            List<Object[]> pessoasNomeEnderecoNamed = pessoaBean.findNomeEnderecoNamed();
-//            out.println(Util.formatarImprimir("3) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoNamed));
+            List<Pessoa> pessoasNomeEnderecoQuery = pessoaBean.findNomeEnderecoQuery();
+            out.println(Util.formatarImprimir("3-a) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoQuery));
+            
+            List<Pessoa> pessoasNomeEnderecoTyped = pessoaBean.findNomeEnderecoTyped();
+            out.println(Util.formatarImprimir("3-b) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoTyped));
+            
+            List<Object[]> pessoasNomeEnderecoNamed = pessoaBean.findNomeEnderecoNamed();
+            out.println(Util.formatarImprimir("3-c) Quais as pessoas (nome) e seus respectivos endereços (dados completos)?", pessoasNomeEnderecoNamed));
 //            
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 4">
-//            List<Pessoa> pessoasInAvendaQuery = pessoaBean.findPessoaInAvenidaQuery();
-//            out.println(Util.formatarImprimir("4) Quais pessoas (dados completos) moram em avenidas?", pessoasInAvendaQuery));
-//            List<Pessoa> pessoasInAvendaTyped = pessoaBean.findPessoaInAvenidaTyped();
-//            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaTyped));
-//            List<Pessoa> pessoasInAvendaNamed = pessoaBean.findPessoaInAvenidaNamed();
-//            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaNamed));
+            List<Pessoa> pessoasInAvendaQuery = pessoaBean.findPessoaInAvenidaQuery();
+            out.println(Util.formatarImprimir("4-a) Quais pessoas (dados completos) moram em avenidas?", pessoasInAvendaQuery));
+            
+            List<Pessoa> pessoasInAvendaTyped = pessoaBean.findPessoaInAvenidaTyped();
+            out.println(Util.formatarImprimir("4-b) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaTyped));
+            
+            List<Pessoa> pessoasInAvendaNamed = pessoaBean.findPessoaInAvenidaNamed();
+            out.println(Util.formatarImprimir("4-c) Quais as pessoas (dados completos) cadastradas?", pessoasInAvendaNamed));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 5">
-//            List<Pessoa> pessoasNotPracaQuery = pessoaBean.findPessoaNotPracaQuery();
-//            out.println(Util.formatarImprimir("4) Quais pessoas (dados completos) não moram em praças?", pessoasNotPracaQuery));
-//            List<Pessoa> pessoasNotPracaTyped = pessoaBean.findPessoaNotPracaTyped();
-//            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaTyped));
-//            List<Pessoa> pessoasNotPracaNamed = pessoaBean.findPessoaNotPracaNamed();
-//            out.println(Util.formatarImprimir("4) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaNamed));
+            List<Pessoa> pessoasNotPracaQuery = pessoaBean.findPessoaNotPracaQuery();
+            out.println(Util.formatarImprimir("5-a) Quais pessoas (dados completos) não moram em praças?", pessoasNotPracaQuery));
+            
+            List<Pessoa> pessoasNotPracaTyped = pessoaBean.findPessoaNotPracaTyped();
+            out.println(Util.formatarImprimir("5-b) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaTyped));
+            
+            List<Pessoa> pessoasNotPracaNamed = pessoaBean.findPessoaNotPracaNamed();
+            out.println(Util.formatarImprimir("5-c) Quais as pessoas (dados completos) cadastradas?", pessoasNotPracaNamed));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 6">
-//            List<Object[]> pessoaNomeTelefoneQuery = pessoaBean.findPessoaNomeTelefoneQuery();
-//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneQuery));
-//            List<Object[]> pessoaNomeTelefoneTyped = pessoaBean.findPessoaNomeTelefoneTyped();
-//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneTyped));
-//            List<Object[]> pessoaNomeTelefoneNamed = pessoaBean.findPessoaNomeTelefoneNamed();
-//            out.println(Util.formatarImprimir("6) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneNamed));
+            List<Object[]> pessoaNomeTelefoneQuery = pessoaBean.findPessoaNomeTelefoneQuery();
+            out.println(Util.formatarImprimir("6-a) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneQuery));
+            
+            List<Object[]> pessoaNomeTelefoneTyped = pessoaBean.findPessoaNomeTelefoneTyped();
+            out.println(Util.formatarImprimir("6-b) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneTyped));
+            
+            List<Object[]> pessoaNomeTelefoneNamed = pessoaBean.findPessoaNomeTelefoneNamed();
+            out.println(Util.formatarImprimir("6-c) Quais pessoas (nomes) e seus respectivos telefones (dados completos)?", pessoaNomeTelefoneNamed));
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 7">
-//            List<Pessoa> pessoasPorData = pessoaBean.findPessoaByDate(
-//                    LocalDate.of(2001, Month.APRIL, 1),
-//                    LocalDate.of(2004, Month.APRIL, 30));
-//
-//            out.println(Util.formatarImprimir("7) Quais as pessoas (dados completos) que nasceram entre abril de 2001 e abril de 2004?",
-//                    pessoasPorData));
+            List<Pessoa> pessoasPorData = pessoaBean.findPessoaByDate(
+                    LocalDate.of(2001, Month.APRIL, 1),
+                    LocalDate.of(2004, Month.APRIL, 30));
+
+            out.println(Util.formatarImprimir("7) Quais as pessoas (dados completos) que nasceram entre abril de 2001 e abril de 2004?",
+                    pessoasPorData));
 
 //</editor-fold>
 
@@ -123,18 +134,19 @@ public class RelatoriosServlet extends HttpServlet {
 //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc="Questao 9">
-//            List<Pessoa> pessoasTelefoneVazio = pessoaBean.findPessoaTelefoneVazio();
-//
-//            out.println(Util.formatarImprimir("9) Quais pessoas (dados completos) não possuem telefone?",
-//                    pessoasTelefoneVazio));
+            List<Pessoa> pessoasTelefoneVazio = pessoaBean.findPessoaTelefoneVazio();
+
+            out.println(Util.formatarImprimir("9) Quais pessoas (dados completos) não possuem telefone?",
+                    pessoasTelefoneVazio));
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="Questao 10">
+            //<editor-fold defaultstate="collapsed" desc="Questao 10">
 List<String> telefonesPorPessoa = pessoaBean.findQuantidadeTelefonesPorPessoa();
 
             out.println(Util.formatarImprimir("10) Quantos telefones cada pessoa (nome) tem?",
                     telefonesPorPessoa));
 //</editor-fold>
+
             out.println("</body>");
             out.println("</html>");
         }

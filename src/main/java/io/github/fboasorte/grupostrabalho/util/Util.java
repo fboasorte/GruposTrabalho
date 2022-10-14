@@ -31,8 +31,10 @@ public class Util {
     
     public static String formatarImprimir(String titulo,Object object){
         String texto;
-        texto = ("<h2>" + titulo + "</h2>");
-        texto += ("<p><pre>"+toJson(object)+"</p></pre>");
+        texto = "<h2>" + titulo + "</h2>" +
+        "<details style=\"cursor: pointer;\"> "+
+        "<summary>Resposta</summary> "+
+        "<p><pre>"+toJson(object)+"</p></pre></details>";
         return texto;
     }
 }
